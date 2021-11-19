@@ -1,9 +1,9 @@
 val Http4sVersion = "0.23.6"
 val CirceVersion = "0.14.1"
-val CirceConfigVersion = "0.8.0"
 val LogbackVersion = "1.2.6"
 val DoobieVersion = "1.0.0-RC1"
 val PostgresVersion = "42.3.1"
+val PureConfigVersion = "0.17.0"
 val FlywayVersion = "8.0.3"
 val ScalaTagsVersion = "0.10.0"
 val TSecVersion = "0.4.0"
@@ -27,7 +27,8 @@ lazy val root = (project in file("."))
       "org.flywaydb" % "flyway-core" % FlywayVersion,
       "com.lihaoyi" %% "scalatags" % ScalaTagsVersion,
       "io.circe" %% "circe-generic" % CirceVersion,
-      "io.circe" %% "circe-config" % CirceConfigVersion,
+      "com.github.pureconfig" %% "pureconfig" % PureConfigVersion,
+      "com.github.pureconfig" %% "pureconfig-cats-effect" % PureConfigVersion,
       "ch.qos.logback" % "logback-classic" % LogbackVersion,
       "io.github.jmcardon" %% "tsec-common" % TSecVersion,
       "io.github.jmcardon" %% "tsec-password" % TSecVersion,
