@@ -1,6 +1,6 @@
 val Http4sVersion = "0.23.6"
 val CirceVersion = "0.14.1"
-val LogbackVersion = "1.2.6"
+val LogbackVersion = "1.2.7"
 val DoobieVersion = "1.0.0-RC1"
 val PostgresVersion = "42.3.1"
 val PureConfigVersion = "0.17.0"
