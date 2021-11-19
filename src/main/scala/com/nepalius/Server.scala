@@ -13,16 +13,19 @@ import com.nepalius.user.api.NormalUserRoutes
 import com.nepalius.user.domain.UserService
 import com.nepalius.user.repo.UserRepoImpl
 import com.nepalius.view.ViewRoutes
-import io.circe.config.parser
 import org.http4s.blaze.server.BlazeServerBuilder
 import org.http4s.implicits._
 import org.http4s.server.{Server => HttpServer}
+import pureconfig.ConfigSource
+import pureconfig.generic.auto._
+import pureconfig.module.catseffect.syntax._
 import tsec.passwordhashers.jca.BCrypt
 
 object Server {
+
   def create[F[_]: Async]: Resource[F, HttpServer] =
     for {
-      conf <- Resource.eval(parser.decodePathF[F, AppConfig]("nepalius"))
+      conf <- Resource.eval(ConfigSource.default.loadF[F, AppConfig]())
       transactor <- DatabaseSetup.dbTransactor(conf.db)
       userRepo = UserRepoImpl(transactor)
       postRepo = PostRepoImpl(transactor)
